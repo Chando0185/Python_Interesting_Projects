@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flask Login</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: radial-gradient(circle at top, #0f2027, #203a43, #000);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        /* Glass card */
+        .login-box {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(15px);
+            padding: 45px;
+            width: 340px;
+            border-radius: 16px;
+            box-shadow: 0 0 40px rgba(0, 198, 255, 0.25);
+            color: white;
+            position: relative;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .login-box h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            letter-spacing: 1px;
+        }
+
+        /* Input group */
+        .input-group {
+            position: relative;
+            margin-bottom: 28px;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 14px 12px;
+            background: transparent;
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 8px;
+            outline: none;
+            color: white;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        /* Glow while typing */
+        .input-group input:focus {
+            border-color: #00c6ff;
+            box-shadow: 0 0 12px #00c6ff;
+        }
+
+        /* Floating label */
+        .input-group label {
+            position: absolute;
+            top: 50%;
+            left: 12px;
+            transform: translateY(-50%);
+            font-size: 13px;
+            color: rgba(255,255,255,0.7);
+            pointer-events: none;
+            transition: 0.3s;
+            background: transparent;
+        }
+
+        .input-group input:focus + label,
+        .input-group input:valid + label {
+            top: -8px;
+            left: 10px;
+            font-size: 11px;
+            color: #00c6ff;
+            background: #0f2027;
+            padding: 0 6px;
+        }
+
+        /* Animated button */
+        button {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #00c6ff, #0072ff);
+            color: black;
+            font-weight: 600;
+            letter-spacing: 1px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: 0.3s;
+        }
+
+        button::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255,255,255,0.3);
+            transition: 0.4s;
+        }
+
+        button:hover::before {
+            left: 0;
+        }
+
+        button:hover {
+            box-shadow: 0 0 20px #00c6ff;
+            transform: translateY(-2px);
+        }
+
+        /* Neon border effect */
+        .login-box::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: 16px;
+            border: 1px solid rgba(0,198,255,0.5);
+            box-shadow: inset 0 0 20px rgba(0,198,255,0.2);
+            pointer-events: none;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="login-box">
+    <h2>Secure Login</h2>
+
+    <form method="POST">
+        <div class="input-group">
+            <input type="text" name="username" required>
+            <label>Username</label>
+        </div>
+
+        <div class="input-group">
+            <input type="password" name="password" required>
+            <label>Password</label>
+        </div>
+
+        <button id="login-btn" type="submit">LOGIN</button>
+    </form>
+</div>
+
+</body>
+</html>
